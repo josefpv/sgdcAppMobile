@@ -6,6 +6,8 @@ import { SafeAreaProvider } from "react-native-safe-area-context";
 //Fonts
 import * as Font from "expo-font";
 import AppLoading from "expo-app-loading";
+//Navigator
+import Navigator from "./navigation/Navigator";
 
 const fetchFonts = () => {
   return Font.loadAsync({
@@ -29,10 +31,7 @@ export default function App() {
 
   return (
     <SafeAreaProvider>
-      <View style={styles.container}>
-        <Text>Open up App.js to start working on your app!</Text>
-        <StatusBar style="auto" />
-      </View>
+      <Navigator />
     </SafeAreaProvider>
   );
 }
