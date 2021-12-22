@@ -1,6 +1,7 @@
 import React from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import config from "./../config.json";
 //Components
 import Inicio from "./../components/Inicio";
 import Ajustes from "./../components/Ajustes";
@@ -14,6 +15,7 @@ export default () => {
   return (
     <NavigationContainer>
       <Tab.Navigator
+        initialRouteName="Inicio"
         screenOptions={({ route }) => ({
           tabBarIcon: ({ focused, color, size }) => {
             let iconName;
@@ -30,8 +32,9 @@ export default () => {
 
             return <Ionicons name={iconName} size={size} color={color} />;
           },
-          tabBarActiveTintColor: "#243dff",
-          tabBarInactiveTintColor: "gray",
+          headerShown: false,
+          tabBarActiveTintColor: config.colors.primary,
+          tabBarInactiveTintColor: config.colors.disabled,
         })}
       >
         <Tab.Screen name="Inicio" component={Inicio} />

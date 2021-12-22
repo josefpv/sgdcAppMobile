@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { StatusBar } from "expo-status-bar";
 import { StyleSheet, Text, View } from "react-native";
+import Toast from "react-native-toast-message";
 //React Native Elements
 import { SafeAreaProvider } from "react-native-safe-area-context";
 //Fonts
@@ -8,11 +9,20 @@ import * as Font from "expo-font";
 import AppLoading from "expo-app-loading";
 //Navigator
 import Navigator from "./navigation/Navigator";
+//redux
+import { Provider } from "react-redux";
+import { createStore, applyMiddleware } from "redux";
+import thunk from "redux-thunk";
+import rootReducers from "./redux/reducers";
+
+//to use redux dev tools
+const store = createStore(rootReducers, applyMiddleware(thunk));
 
 const fetchFonts = () => {
   return Font.loadAsync({
-    "titilliumWeb-regular": require("./assets/fonts/TitilliumWeb-Regular.ttf"),
-    "titilliumWeb-bold": require("./assets/fonts/TitilliumWeb-Bold.ttf"),
+    "lato-regular": require("./assets/fonts/Lato-Regular.ttf"),
+    "lato-bold": require("./assets/fonts/Lato-Bold.ttf"),
+    "lato-light": require("./assets/fonts/Lato-Light.ttf"),
   });
 };
 
@@ -30,9 +40,12 @@ export default function App() {
   }
 
   return (
-    <SafeAreaProvider>
-      <Navigator />
-    </SafeAreaProvider>
+    <Provider store={store}>
+      <SafeAreaProvider>
+        <Navigator />
+        <Toast />
+      </SafeAreaProvider>
+    </Provider>
   );
 }
 

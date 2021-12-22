@@ -1,0 +1,12 @@
+{
+    "global": "http://186.67.130.114:5050/",
+    "resources": {
+        "consultaMarquesinas": "estacion/marquesinas/",
+        "consultaCargadores": "estacion/consulta/"
+    },
+    "colors": {
+        "primary": "#255cb3",
+        "primary-light": "#6080b3",
+        "disabled": "gray"
+    }
+}
