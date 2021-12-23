@@ -33,7 +33,7 @@ export default () => {
             return <Ionicons name={iconName} size={size} color={color} />;
           },
           headerShown: false,
-          tabBarActiveTintColor: config.colors.primary,
+          tabBarActiveTintColor: config.colors["primary-light"],
           tabBarInactiveTintColor: config.colors.disabled,
         })}
       >

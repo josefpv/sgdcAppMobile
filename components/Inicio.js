@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { View } from "react-native";
+import { View, ScrollView } from "react-native";
 import { Text, ListItem, Avatar } from "react-native-elements";
 import { SafeAreaView } from "react-native-safe-area-context";
 import config from "./../config.json";
@@ -8,6 +8,7 @@ import { connect } from "react-redux";
 import { fetchMarquesinas } from "./../redux/actions/cargas";
 //styles
 import { utils } from "./../styles/styles";
+import MarquesinaCard from "./common/MarquesinaCard";
 
 const Inicio = ({ fetchMarquesinas, marquesinas }) => {
   useEffect(() => {
@@ -15,33 +16,24 @@ const Inicio = ({ fetchMarquesinas, marquesinas }) => {
   }, []);
 
   return (
-    <SafeAreaView style={{ backgroundColor: "#ffffff" }}>
+    <SafeAreaView>
       <View style={[utils.container]}>
         <View>
-          <Text style={{ fontFamily: "lato-bold" }}>Marqueisnas</Text>
-          <Text style={{ fontFamily: "lato-light" }}>
+          <Text
+            style={{ fontFamily: "lato-bold", color: "#000000", fontSize: 20 }}
+          >
+            Marquesinas
+          </Text>
+          <Text style={{ fontFamily: "lato-light", color: "#000000" }}>
             Seleccione una marquesina para ver sus cargadores.
           </Text>
         </View>
-        <View>
-          {marquesinas
-            ? marquesinas.map((marquesina, index) => (
-                <ListItem key={index} bottomDivider topDivider>
-                  <Avatar
-                    title={marquesina.nombre.split(0)}
-                    rounded
-                    containerStyle={{
-                      backgroundColor: config.colors["primary-light"],
-                    }}
-                  />
-                  <ListItem.Content>
-                    <ListItem.Title>{`Marquesina ${marquesina.nombre}`}</ListItem.Title>
-                    <ListItem.Subtitle>{`Cargadores ${marquesina.totalCargadores}`}</ListItem.Subtitle>
-                  </ListItem.Content>
-                  <ListItem.Chevron />
-                </ListItem>
-              ))
-            : null}
+        <View style={{ flexDirection: "row" }}>
+          <ScrollView horizontal>
+            {marquesinas.map((marquesina) => (
+              <MarquesinaCard data={marquesina} />
+            ))}
+          </ScrollView>
         </View>
       </View>
     </SafeAreaView>

@@ -5,8 +5,9 @@
         "consultaCargadores": "estacion/consulta/"
     },
     "colors": {
-        "primary": "#255cb3",
+        "primary": "#0f6ff5",
         "primary-light": "#6080b3",
+        "danger": "#9c0606",
         "disabled": "gray"
     }
 }
