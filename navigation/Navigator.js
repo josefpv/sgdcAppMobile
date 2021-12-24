@@ -6,8 +6,10 @@ import config from "./../config.json";
 import Inicio from "./../components/Inicio";
 import Ajustes from "./../components/Ajustes";
 import Marquesinas from "./../components/Marquesinas";
+
 //Icons
 import Ionicons from "react-native-vector-icons/Ionicons";
+import NavigatorAll from "./NavigatorAll";
 
 const Tab = createBottomTabNavigator();
 
@@ -33,11 +35,11 @@ export default () => {
             return <Ionicons name={iconName} size={size} color={color} />;
           },
           headerShown: false,
-          tabBarActiveTintColor: config.colors["primary-light"],
+          tabBarActiveTintColor: config.colors["primary"],
           tabBarInactiveTintColor: config.colors.disabled,
         })}
       >
-        <Tab.Screen name="Inicio" component={Inicio} />
+        <Tab.Screen name="Inicio" component={NavigatorAll} />
         <Tab.Screen name="Marquesinas" component={Marquesinas} />
         <Tab.Screen name="Ajustes" component={Ajustes} />
       </Tab.Navigator>
